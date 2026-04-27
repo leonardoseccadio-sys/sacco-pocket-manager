@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sacco System | Pocket Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Aplicando as cores institucionais do Brand Book */
+        body { 
+            font-family: 'Inter Tight', Arial, sans-serif; 
+            padding: 20px; 
+            max-width: 600px; 
+            margin: auto; 
+            background-color: #F2F0F6; /* Fundo oficial secundário */
+            color: #482683; /* Roxo Sacco */
+        }
+        .container { 
+            background-color: white; 
+            padding: 30px 20px; 
+            border-radius: 8px; 
+            box-shadow: 0 8px 16px rgba(72, 38, 131, 0.1); 
+            border-top: 5px solid #32D2B5; /* Destaque Azul Água Sacco */
+        }
+        .logo-area {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .logo-sacco {
+            font-weight: 800; /* ExtraBold */
+            font-size: 32px;
+            color: #482683;
+            line-height: 1;
+            letter-spacing: -1px;
+        }
+        .logo-system {
+            font-weight: 300; /* Light */
+            font-size: 28px;
+            color: #482683;
+            line-height: 0.8;
+            letter-spacing: 1px;
+        }
+        h2 { 
+            text-align: center; 
+            color: #482683; 
+            font-size: 18px; 
+            font-weight: 700;
+            margin-bottom: 25px; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .form-group { margin-bottom: 15px; }
+        label { 
+            display: block; 
+            margin-bottom: 5px; 
+            font-weight: 700; 
+            color: #482683; 
+            font-size: 14px;
+        }
+        input, select { 
+            width: 100%; 
+            padding: 12px; 
+            border: 1px solid #D1C9DF; 
+            border-radius: 4px; 
+            box-sizing: border-box; 
+            font-size: 14px; 
+            font-family: 'Inter Tight', Arial, sans-serif;
+            color: #333;
+            background-color: #FAFAFA;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #32D2B5;
+            box-shadow: 0 0 5px rgba(50, 210, 181, 0.4);
+        }
+        
+        /* Botão com o Gradiente Institucional Oficial */
+        button { 
+            padding: 14px; 
+            background: linear-gradient(90deg, #482683 0%, #32D2B5 100%); /* Do Roxo ao Azul Água */
+            color: white; 
+            border: none; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            width: 100%; 
+            font-size: 16px; 
+            font-weight: 800; 
+            margin-top: 15px; 
+            transition: opacity 0.3s ease;
+        }
+        button:hover { 
+            opacity: 0.9;
+            box-shadow: 0 4px 10px rgba(50, 210, 181, 0.3);
+        }
+        .row { display: flex; gap: 10px; }
+        .col { flex: 1; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="logo-area">
+        <div class="logo-sacco">SACCO</div>
+        <div class="logo-system">system</div>
+    </div>
+    <h2>Pocket Manager</h2>
+
+    <form id="projetoForm">
+        <div class="form-group">
+            <label>Cliente:</label>
+            <input type="text" id="cliente" required placeholder="Ex: Kinatural">
+        </div>
+        <div class="form-group">
+            <label>Técnico:</label>
+            <input type="text" id="tecnico" required placeholder="Ex: Luã / Lucas">
+        </div>
+        <div class="form-group">
+            <label>Aplicação:</label>
+            <input type="text" id="aplicacao" required placeholder="Ex: Iogurte, Queijo Prato">
+        </div>
+        <div class="form-group">
+            <label>Produto:</label>
+            <input type="text" id="produto" required placeholder="Ex: Yo-Mild">
+        </div>
+        
+        <div class="form-group">
+            <label>Tipo / Linha de Produto:</label>
+            <select id="tipo" required>
+                <option value="" disabled selected>Selecione a linha...</option>
+                <option value="Lyo">Lyofast</option>
+                <option value="Cryo">Cryofast</option>
+                <option value="Peel Plate">Peel Plate</option>
+                <option value="Outros">Outros</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Fase do Projeto:</label>
+            <select id="fase" required>
+                <option value="1. Insight / Interesse">1. Insight / Interesse</option>
+                <option value="2. Envio de Amostra">2. Envio de Amostra</option>
+                <option value="3. Testes Práticos (Trials)">3. Testes Práticos (Trials)</option>
+                <option value="4. Negociação">4. Negociação</option>
+                <option value="5. Implementação (Venda)">5. Implementação (Venda)</option>
+            </select>
+        </div>
+
+        <div class="form-group row">
+            <div class="col">
+                <label>Quantidade / Dose:</label>
+                <input type="number" id="dose" step="0.1" required placeholder="Ex: 10">
+            </div>
+            <div class="col">
+                <label>Unidade de Medida:</label>
+                <select id="unidade" required>
+                    <option value="UC">UC</option>
+                    <option value="Unidades">Unidades (Placas)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col">
+                <label>Nº Envelopes/Placas:</label>
+                <input type="number" id="envelopes" required placeholder="Ex: 80">
+            </div>
+            <div class="col">
+                <label>Início Previsto:</label>
+                <input type="date" id="inicio">
+            </div>
+        </div>
+
+        <button type="submit">Salvar Registro</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('projetoForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Captura os valores digitados
+        const cliente = document.getElementById('cliente').value;
+        const tecnico = document.getElementById('tecnico').value;
+        const aplicacao = document.getElementById('aplicacao').value;
+        const produto = document.getElementById('produto').value;
+        const tipo = document.getElementById('tipo').value;
+        const fase = document.getElementById('fase').value;
+        const dose = document.getElementById('dose').value;
+        const unidade = document.getElementById('unidade').value;
+        const envelopes = document.getElementById('envelopes').value;
+        
+        // Formata a data para o padrão brasileiro DD/MM/YYYY
+        let inicio = document.getElementById('inicio').value;
+        if(inicio) {
+            const partes = inicio.split('-');
+            inicio = `${partes[2]}/${partes[1]}/${partes[0]}`;
+        } else {
+            inicio = ""; 
+        }
+
+        // Une a dose com a unidade
+        const doseUnidade = `${dose} ${unidade}`;
+
+        // Cria o cabeçalho idêntico ao padrão da diretoria
+        let csvContent = "CLIENTE;TÉCNICO;APLICAÇÃO;PRODUTO;TIPO;FASE;DOSE (UC) / UNID;Nº ENVELOPES;INÍCIO PREVISTO\n";
+        
+        // Adiciona a linha com os dados
+        csvContent += `${cliente};${tecnico};${aplicacao};${produto};${tipo};${fase};${doseUnidade};${envelopes};${inicio}\n`;
+
+        // Adiciona o BOM (\uFEFF) para forçar o Excel a ler os acentos corretamente
+        const blob = new Blob(["\uFEFF" + csvContent], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement("a");
+        
+        // Força o download do arquivo
+        const url = URL.createObjectURL(blob);
+        link.setAttribute("href", url);
+        link.setAttribute("download", "Controle_Projetos_Sacco.csv");
+        link.style.visibility = 'hidden';
+        
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        // Limpa o formulário após salvar
+        document.getElementById('projetoForm').reset();
+    });
+</script>
+
+</body>
+</html>
